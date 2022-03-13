@@ -11,8 +11,7 @@ class TelegramController extends Controller
 
     public function actionIndex($token = '') {
         $this->layout = false;
-        $telegram = new Telegram(getenv('TELEGRAM_API_KEY'));
-        $telegram->log_errors = false;
+        $telegram = new Telegram(getenv('TELEGRAM_API_KEY'), false);
         $this->response->format=Response::FORMAT_JSON;
         if($token == 'set'){
             $url = $this->request->hostInfo . '/' . $this->id . '/?token=' . getenv('TELEGRAM_API_KEY');
